@@ -2,19 +2,21 @@
 
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
-import { redirect } from "next/navigation";
 
-export async function getUserprofileAction() {
-  const session = await auth();
-  if (!session) {
-    redirect("/");
-  }
+export async function getUserProfileAction() {
+  const session = await auth()
 
   try {
     const user = await db.user.findFirst({
       where: {
         email: session?.user.email as string,
       },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        image: true
+      }
     });
 
     if (!user) {

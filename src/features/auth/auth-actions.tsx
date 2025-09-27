@@ -19,6 +19,7 @@ export async function registerUserAction(data: z.infer<typeof registerFormSchema
         email: validated.email,
         password: hashedPassword,
         role: "USER",
+        image: "/assets/pi.png"
       },
     });
     return { success: true, message: "User Registered" };
@@ -43,7 +44,7 @@ export async function loginUserAction(data: z.infer<typeof loginFormSchema>) {
     const isValid = compareSync(validated.password, user.password);
     if (!isValid) return { success: false, message: "Invalid credentials" };
 
-    const result = await signIn("credentials", {
+    await signIn("credentials", {
       redirect: false,
       email: validated.email,
       password: validated.password,

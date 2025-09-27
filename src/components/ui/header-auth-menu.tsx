@@ -14,7 +14,7 @@ export default async function HeaderAuthMenu() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Avatar>
-              <AvatarImage src={"/assets/profile/pi.png"} alt="profile image" />
+              <AvatarImage src={session.user.image as string} alt="profile image" />
               <AvatarFallback>ET</AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>

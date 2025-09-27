@@ -1,0 +1,25 @@
+import { NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
+
+export default function CrimeMenuList() {
+  return (
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Crimes</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <div className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+          <NavigationMenuLink href="/crime/crime-stats">
+            <div className="font-medium">Crime Stats</div>
+            <div className="text-muted-foreground text-xs">Check current crime in Tamworth</div>
+          </NavigationMenuLink>
+          <NavigationMenuLink href="/crime/stop-search">
+            <div className="font-medium">Stop & Search Stats</div>
+            <div className="text-muted-foreground text-xs">Check current crime in Tamworth</div>
+          </NavigationMenuLink>
+          <NavigationMenuLink href="/crime/stolen-report">
+            <div className="font-medium">Stolen Item Report</div>
+            <div className="text-muted-foreground text-xs">Report your stolen Items. Let the community know so they can keep an eye out for you</div>
+          </NavigationMenuLink>
+        </div>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+  )
+}
