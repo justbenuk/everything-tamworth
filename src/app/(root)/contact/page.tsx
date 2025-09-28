@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <PageContainer className="space-y-12">
-      <div className="flex flex-col items-center justify-center">
-        <h1 className="text-5xl font-medium text-teal-500 md:text-center">Get in touch with us</h1>
-        <p className="lg:w-2/3 md:text-center mt-2">Do you have any questions about this community portal, or do you have any ideas you would like to see added. reach out to us and let is know what your thoughts are.</p>
+      <div className="flex flex-col items-center justify-center space-y-6">
+        <h1 className="text-7xl font-bold text-teal-500 md:text-center">Get in touch with us</h1>
+        <p className="lg:w-2/3 md:text-center mt-2 text-teal-500 font-medium">Do you have any questions about this community portal, or do you have any ideas you would like to see added. reach out to us and let is know what your thoughts are.</p>
       </div>
-      <div className="grid lg:grid-cols-2 gap-20">
-        <div className="space-y-4">
+      <div className="grid lg:grid-cols-2 gap-10 2xl:gap-20">
+        <div className="space-y-4 bg-muted p-6 rounded-2xl">
           <div>
             <h2 className="font-medium text-2xl md:text-4xl">Have Questions? We&apos;re just a Message Away</h2>
             <p className="text-muted-foreground text-sm">Fill out the form below and one of our team members will get back to you as soon as possible</p>

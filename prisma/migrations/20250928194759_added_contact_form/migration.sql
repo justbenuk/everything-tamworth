@@ -1,0 +1,12 @@
+-- CreateTable
+CREATE TABLE "public"."Contact" (
+    "id" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "contactNumber" TEXT,
+    "subject" TEXT,
+    "message" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Contact_pkey" PRIMARY KEY ("id")
+);
