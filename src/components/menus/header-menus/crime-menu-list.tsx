@@ -6,6 +6,10 @@ export default function CrimeMenuList() {
       <NavigationMenuTrigger>Crimes</NavigationMenuTrigger>
       <NavigationMenuContent>
         <div className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+          <NavigationMenuLink href="/crime">
+            <div className="font-medium">All Crime</div>
+            <div className="text-muted-foreground text-xs">News, Stolen and Crime reports.</div>
+          </NavigationMenuLink>
           <NavigationMenuLink href="/crime/crime-stats">
             <div className="font-medium">Crime Stats</div>
             <div className="text-muted-foreground text-xs">Check current crime in Tamworth</div>
