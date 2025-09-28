@@ -1,6 +1,5 @@
 'use client'
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
@@ -46,7 +45,7 @@ export default function UpdateProfileDetailsForm({ user }: UserProps) {
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input {...field} disabled={!editForm} />
+                    <Input {...field} disabled={!editForm} className="p-5" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -59,9 +58,9 @@ export default function UpdateProfileDetailsForm({ user }: UserProps) {
               name='email'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Email Address</FormLabel>
                   <FormControl>
-                    <Input {...field} disabled={!editForm} />
+                    <Input {...field} disabled={!editForm} className="p-5" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

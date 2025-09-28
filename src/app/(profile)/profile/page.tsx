@@ -26,7 +26,10 @@ export default async function ProfilePage() {
         <Separator orientation="vertical" className="hidden lg:block" />
         <Separator orientation="horizontal" className="lg:hidden" />
       </div>
-      <div>image</div>
+      <div>
+        <h1 className="font-medium text-sm pb-2">Profile Picture</h1>
+        <div className="w-full border-2 border-dashed h-24 rounded-3xl"></div>
+      </div>
     </div>
   </div>
 }

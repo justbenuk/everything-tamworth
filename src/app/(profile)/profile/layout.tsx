@@ -8,12 +8,12 @@ export default function RootLayout({ children }: LayoutProps) {
     <div className="flex flex-col justify-between min-h-screen">
       <Header />
       <PageContainer className="flex-1 mt-4">
-        <div className="grid grid-cols-1 xl:grid-cols-[1fr_300px] gap-4">
+        <div className="grid grid-cols-1 xl:grid-cols-[1fr_300px] gap-10">
           <div>{children}</div>
           <div className="mt-6">
-            <h1 className="font-medium text-3xl">FAQ&apos;s</h1>
+            <h1 className="font-medium text-3xl px-4 pb-6">FAQ&apos;s</h1>
             <div className="w-full">
-              <Accordion type="single" className="w-full bg-muted px-6">
+              <Accordion type="single" className="w-full bg-muted px-6 h-full">
                 <AccordionItem value="item-1">
                   <AccordionTrigger>How do I change my password</AccordionTrigger>
                   <AccordionContent className="flex flex-col gap-4 text-balance">
