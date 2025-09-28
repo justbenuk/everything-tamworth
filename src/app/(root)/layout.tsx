@@ -5,7 +5,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <div className="flex flex-col justify-between min-h-screen">
       <Header />
-      <main>{children}</main>
+      <main className="flex-1 mt-10">{children}</main>
       <footer>footer</footer>
     </div>
   );

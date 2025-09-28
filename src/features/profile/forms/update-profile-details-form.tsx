@@ -7,6 +7,8 @@ import { updateProfileSchema } from "../update-profile-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { updateProfileDetailsAction } from "../profile-actions";
+import toast from "react-hot-toast";
 
 type UserProps = {
   user: {
@@ -29,7 +31,12 @@ export default function UpdateProfileDetailsForm({ user }: UserProps) {
   })
 
   async function handleForm(values: z.infer<typeof updateProfileSchema>) {
-    console.log(values)
+    const { success, message } = await updateProfileDetailsAction(values)
+    if (!success) {
+      toast.error(message)
+    } else {
+      toast.success(message)
+    }
   }
 
 

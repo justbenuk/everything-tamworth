@@ -61,8 +61,10 @@ export async function loginUserAction(data: z.infer<typeof loginFormSchema>) {
 }
 
 export async function isLoggedIn() {
+  //get the session 
   const session = await auth();
   if (session?.user) return redirect("/profile");
+  return session
 }
 
 export async function logoutUserAction() {

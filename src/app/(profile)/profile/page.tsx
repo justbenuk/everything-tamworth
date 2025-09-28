@@ -6,6 +6,7 @@ import { getUserProfileAction } from "@/features/profile/profile-actions";
 import { redirect } from "next/navigation";
 import React from "react";
 
+
 export default async function ProfilePage() {
   const session = await auth()
   if (!session) redirect('/login')
