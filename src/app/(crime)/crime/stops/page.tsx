@@ -1,25 +1,23 @@
 import PageContainer from "@/components/page-container"
-import { getAllCrimesAction } from "@/features/crime/crime-actions"
-import CrimeMapOuter from "@/features/maps/crime-map-outer"
+import { getAllStopSearchAction } from "@/features/crime/crime-actions"
 import { Metadata } from "next"
 import Link from "next/link"
 import { format } from 'date-fns'
 import { enGB } from 'date-fns/locale/en-GB'
-import { CrimeProps } from "@/types"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import StopsMapOuter from "@/features/maps/stops-map-outer"
 
 export const metadata: Metadata = {
-  title: 'Recorded Crimes',
-  description: 'All crimes recorded to staffordshire police that have occured in Tamworth'
+  title: 'Recorded Stop and Search&apos;s',
+  description: 'All Stop and Search&apos;s recorded to staffordshire police that have occured in Tamworth'
 }
 
-export default async function StatsPage() {
+export default async function StopsPage() {
   const pop = 78647
-  const { merged, lastUpdated, success, message } = await getAllCrimesAction()
+  const { stops, lastUpdated, success, message } = await getAllStopSearchAction()
   const formatedDate = format(lastUpdated.date, "LLLL uuuu", { locale: enGB })
-  const categories: string[] = Array.from(new Set(merged.map((c: CrimeProps) => c.category)))
   const population = new Intl.NumberFormat("en-GB").format(pop)
-  const percentage = (merged.length / pop) * 1000;
+  const percentage = (stops.length / pop) * 1000;
 
 
   if (!success) {
@@ -37,7 +35,7 @@ export default async function StatsPage() {
 
   return (
     <PageContainer className="space-y-2">
-      <CrimeMapOuter crimes={merged} categories={categories} />
+      <StopsMapOuter searches={stops} />
       <div className="flex flex-row justify-end items-center">
         <div className="font-medium italic text-xs">Last Updated: {formatedDate}</div>
       </div>
@@ -47,7 +45,7 @@ export default async function StatsPage() {
             <CardTitle className="text-teal-500">Total Crimes</CardTitle>
           </CardHeader>
           <CardContent className="flex items-center justify-center text-3xl">
-            {merged.length}
+            {stops.length}
           </CardContent>
         </Card>
         <Card>
@@ -63,7 +61,7 @@ export default async function StatsPage() {
             <CardTitle className="text-teal-500">Percentage Per Population</CardTitle>
           </CardHeader>
           <CardContent className="flex items-center justify-center text-3xl">
-            {percentage.toFixed(0) + '%'}
+            {percentage.toFixed(2) + '%'}
           </CardContent>
         </Card>
       </div>

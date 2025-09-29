@@ -17,7 +17,10 @@ export default function CrimeMapOuter({ crimes, categories }: CrimeFilterProps) 
   const filteredCrimes = selectedCategory === "all" ? crimes : crimes.filter((c) => c.category === selectedCategory);
   return (
     <>
-      <CategorySelector categories={categories} selectedCategory={selectedCategory} setCategory={setSelectedCategory} isOpen={open} setIsOpen={setOpen} />
+      <div className="flex flex-row items-center justify-between bg-teal-500 p-2 rounded-2xl my-5">
+        <h1 className="font-medium text-white">Crimes Recoreded</h1>
+        <CategorySelector categories={categories} selectedCategory={selectedCategory} setCategory={setSelectedCategory} isOpen={open} setIsOpen={setOpen} />
+      </div>
       <div className="overflow-hidden">
         <CrimeMapInner crimes={filteredCrimes} />
       </div>

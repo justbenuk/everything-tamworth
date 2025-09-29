@@ -10,13 +10,13 @@ export default function CrimeMenuList() {
             <div className="font-medium">All Crime</div>
             <div className="text-muted-foreground text-xs">News, Stolen and Crime reports.</div>
           </NavigationMenuLink>
-          <NavigationMenuLink href="/crime/crime-stats">
+          <NavigationMenuLink href="/crime/stats">
             <div className="font-medium">Crime Stats</div>
             <div className="text-muted-foreground text-xs">Check current crime in Tamworth</div>
           </NavigationMenuLink>
-          <NavigationMenuLink href="/crime/stop-search">
+          <NavigationMenuLink href="/crime/stops">
             <div className="font-medium">Stop & Search Stats</div>
-            <div className="text-muted-foreground text-xs">Check current crime in Tamworth</div>
+            <div className="text-muted-foreground text-xs">Check stop and search crime in Tamworth</div>
           </NavigationMenuLink>
           <NavigationMenuLink href="/crime/stolen-report">
             <div className="font-medium">Stolen Item Report</div>

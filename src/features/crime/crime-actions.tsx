@@ -36,14 +36,22 @@ export async function getAllCrimesAction() {
     }
   })
 
-  return { success: true, message: 'loaded', merged, lastUpdated }
+  return { success: true, merged, lastUpdated }
 }
 
+export async function getAllStopSearchAction() {
 
-export async function fetchStopSearch() {
-  const res = await fetch(`https://data.police.uk/api/stops-street?poly=${polygon}`);
-  const stops = await res.json();
-  return stops;
+  const [data1, data2] = await Promise.all([
+    fetch(`https://data.police.uk/api/stops-street?poly=${polygon}`),
+    fetch("https://data.police.uk/api/crime-last-updated")
+  ])
+
+  if (!data1.ok) return { success: false, message: 'Failed to lload data' }
+  if (!data2.ok) return { success: false, message: 'Failed to lload data' }
+
+  const stops = await data1.json();
+  const lastUpdated = await data2.json();
+  return { success: true, stops, lastUpdated };
 }
 
 export async function fetchForce() {
