@@ -7,6 +7,7 @@ import { format } from 'date-fns'
 import { enGB } from 'date-fns/locale/en-GB'
 import { CrimeProps } from "@/types"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import PageTitle from "@/components/page-title"
 
 export const metadata: Metadata = {
   title: 'Recorded Crimes',
@@ -37,6 +38,7 @@ export default async function StatsPage() {
 
   return (
     <PageContainer className="space-y-2">
+      <PageTitle title="Recorded Crimes" description="All crimes recorded in Tamworth over the month." />
       <CrimeMapOuter crimes={merged} categories={categories} />
       <div className="flex flex-row justify-end items-center">
         <div className="font-medium italic text-xs">Last Updated: {formatedDate}</div>

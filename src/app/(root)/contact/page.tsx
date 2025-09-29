@@ -1,4 +1,5 @@
 import PageContainer from "@/components/page-container";
+import PageTitle from "@/components/page-title";
 import ContactForm from "@/features/contact/forms/contact-form";
 import { FacebookIcon, MailIcon, MessageCircle, PhoneCallIcon } from "lucide-react";
 import { Metadata } from "next";
@@ -12,10 +13,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <PageContainer className="space-y-12">
-      <div className="flex flex-col items-center justify-center space-y-6">
-        <h1 className="text-7xl font-bold text-teal-500 md:text-center">Get in touch with us</h1>
-        <p className="lg:w-2/3 md:text-center mt-2 text-teal-500 font-medium">Do you have any questions about this community portal, or do you have any ideas you would like to see added. reach out to us and let is know what your thoughts are.</p>
-      </div>
+      <PageTitle title="Get in touch with us" description="Do you have any questions about this community portal, or do you have any ideas you would like to see added. reach out to us and let is know what your thoughts are." />
       <div className="grid lg:grid-cols-2 gap-10 2xl:gap-20">
         <div className="space-y-4 bg-muted p-6 rounded-2xl">
           <div>

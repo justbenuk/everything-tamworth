@@ -6,6 +6,7 @@ import { format } from 'date-fns'
 import { enGB } from 'date-fns/locale/en-GB'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import StopsMapOuter from "@/features/maps/stops-map-outer"
+import PageTitle from "@/components/page-title"
 
 export const metadata: Metadata = {
   title: 'Recorded Stop and Search&apos;s',
@@ -35,6 +36,7 @@ export default async function StopsPage() {
 
   return (
     <PageContainer className="space-y-2">
+      <PageTitle title="Recorded Stop & Search" />
       <StopsMapOuter searches={stops} />
       <div className="flex flex-row justify-end items-center">
         <div className="font-medium italic text-xs">Last Updated: {formatedDate}</div>
