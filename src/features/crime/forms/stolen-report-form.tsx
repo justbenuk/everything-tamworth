@@ -11,12 +11,10 @@ import SimpleEditor from "@/components/simple-editor";
 import Image from "next/image";
 import StolenReportImageUploadButton from "@/features/images/stolen-report-uploader";
 import { removeImageUploadedByUrl } from "@/features/images/image-actions";
+import { createStolenReportAction } from "../crime-actions";
+import toast from "react-hot-toast";
 
 export default function StolenReportForm() {
-
-  async function handleForm(values: z.infer<typeof stolenReportSchema>) {
-    console.log(values)
-  }
 
 
 
@@ -27,15 +25,29 @@ export default function StolenReportForm() {
       email: '',
       contactNumber: '',
       item: '',
-      itemDesscription: '',
+      itemDescription: '',
       registration: '',
-      image: ''
+      image: '',
+      published: false,
+      featured: false,
+      found: false,
     }
   })
 
   async function handleRemoveImage() {
     await removeImageUploadedByUrl(form.getValues("image"))
     form.setValue("image", "")
+  }
+
+  async function handleForm(values: z.infer<typeof stolenReportSchema>) {
+    const { success, message } = await createStolenReportAction(values)
+
+    if (!success) {
+      toast.error(message)
+    } else {
+      toast.success(message)
+      form.reset()
+    }
   }
 
 
@@ -119,7 +131,7 @@ export default function StolenReportForm() {
             <div className="grid gap-3">
               <FormField
                 control={form.control}
-                name="itemDesscription"
+                name="itemDescription"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-teal-500">Item Description</FormLabel>

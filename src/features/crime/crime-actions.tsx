@@ -1,7 +1,11 @@
+'use server'
 import { CrimeProps, OutcomeProps } from "@/types";
+import z from "zod";
+import { stolenReportSchema } from "./crime-validators";
+import { db } from "@/lib/db";
 
-export const polygon = "52.69,-1.67:52.62,-1.52:52.57,-1.72:52.65,-1.84";
-export const force = "staffordshire";
+const polygon = "52.69,-1.67:52.62,-1.52:52.57,-1.72:52.65,-1.84";
+const force = "staffordshire";
 
 export async function getAllCrimesAction() {
 
@@ -58,5 +62,31 @@ export async function fetchForce() {
   const response = await fetch(`https://data.police.uk/api/forces/${force}`);
   const data = await response.json();
   return data;
+}
+
+export async function createStolenReportAction(data: z.infer<typeof stolenReportSchema>) {
+  try {
+
+    const validated = stolenReportSchema.parse(data)
+
+    await db.stolenReport.create({
+      data: {
+        name: validated.name,
+        email: validated.email,
+        contactNumber: validated.contactNumber,
+        item: validated.item,
+        itemDescription: validated.itemDescription,
+        registration: validated.registration,
+        image: validated.image,
+        featured: false,
+        published: false,
+        found: false
+      }
+    })
+    return { success: true, message: 'Report pending' }
+  } catch (error) {
+    console.error(error)
+    return { success: false, message: 'Failed to send report' }
+  }
 }
 
