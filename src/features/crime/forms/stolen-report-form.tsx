@@ -8,12 +8,17 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import SimpleEditor from "@/components/simple-editor";
+import Image from "next/image";
+import StolenReportImageUploadButton from "@/features/images/stolen-report-uploader";
+import { removeImageUploadedByUrl } from "@/features/images/image-actions";
 
 export default function StolenReportForm() {
 
   async function handleForm(values: z.infer<typeof stolenReportSchema>) {
     console.log(values)
   }
+
+
 
   const form = useForm<z.infer<typeof stolenReportSchema>>({
     resolver: zodResolver(stolenReportSchema),
@@ -27,6 +32,13 @@ export default function StolenReportForm() {
       image: ''
     }
   })
+
+  async function handleRemoveImage() {
+    await removeImageUploadedByUrl(form.getValues("image"))
+    form.setValue("image", "")
+  }
+
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleForm)} className="grid gap-6">
@@ -147,12 +159,23 @@ export default function StolenReportForm() {
             <div className="grid gap-3">
               <FormField
                 control={form.control}
-                name="item"
+                name="image"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Item Stolen</FormLabel>
+                    <FormLabel>Crime Image</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      {/* Use the field.value to conditionally render the image or uploader */}
+                      {field.value ? (
+                        <div className="relative w-full h-auto max-h-[300px]">
+                          <Image src={field.value} alt="Uploaded Crime Image" className="rounded-md object-cover" width={500} height={500} />
+                          <Button onClick={handleRemoveImage} variant="destructive" className="absolute top-2 right-2">
+                            Remove
+                          </Button>
+                        </div>
+                      ) : (
+                        // Pass the `field.onChange` function to your component
+                        <StolenReportImageUploadButton onImageUpload={field.onChange} />
+                      )}
                     </FormControl>
                     <FormMessage />
                   </FormItem>
