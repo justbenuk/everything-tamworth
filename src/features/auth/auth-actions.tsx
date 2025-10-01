@@ -70,3 +70,13 @@ export async function isLoggedIn() {
 export async function logoutUserAction() {
   await signOut();
 }
+
+export async function isAdmin() {
+  const session = await auth()
+  if (!session) {
+    redirect('/login')
+  }
+  if (session.user.role !== 'ADMIN') {
+    redirect('/not-authhorised')
+  }
+}

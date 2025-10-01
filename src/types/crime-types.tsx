@@ -55,25 +55,22 @@ export type OutcomeProps = {
   };
 };
 
-export type CrimeReportProps = {
+export type StolenReportProps = {
   id: string;
-  slug: string;
-  incidentDate: string;
-  incidentTime: string;
-  briefDescription: string;
-  image: string;
-  crimeNumber: string | null;
-  crimeCategoryId: string;
+  name: string;
+  email: string;
+  contactNumber: string
+  item: string;
+  itemDescription: string
+  registration: string | null
+  image: string
   published: boolean;
   featured: boolean;
+  found: boolean;
   createdAt: Date;
-  updatedAt: Date;
-  eventDescription: string;
-  category: {
-    category: string;
-  };
+  updatedAt: Date
 };
 
-export type CrimeReportsProps = {
-  reports: CrimeReportProps[];
+export type StolenReportsProps = {
+  reports: StolenReportProps[];
 };
