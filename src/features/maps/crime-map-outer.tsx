@@ -16,14 +16,11 @@ export default function CrimeMapOuter({ crimes, categories }: CrimeFilterProps) 
   //filter the crimes
   const filteredCrimes = selectedCategory === "all" ? crimes : crimes.filter((c) => c.category === selectedCategory);
   return (
-    <>
-      <div className="overflow-hidden">
-        <div className="mb-4 flex flex-row justify-end">
-          <CategorySelector categories={categories} selectedCategory={selectedCategory} setCategory={setSelectedCategory} isOpen={open} setIsOpen={setOpen} />
-        </div>
-        <CrimeMapInner crimes={filteredCrimes} />
-      </div>
-    </>
+    <div className="border">
+      <div className="bg-teal-500 text-white font-semibold p-2">Map Of Tamworth</div>
+      <CrimeMapInner crimes={filteredCrimes} />
+      <CategorySelector categories={categories} selectedCategory={selectedCategory} setCategory={setSelectedCategory} isOpen={open} setIsOpen={setOpen} />
+    </div>
   )
 }
 

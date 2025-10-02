@@ -12,7 +12,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { deleteStolenReportAction, updateStolenReportFeaturedAction, updateStolenReportFoundAction, updateStolenReportPublishedAction } from "../admin-crime-actions"
 import toast from "react-hot-toast"
 
-export default function PendingReportsTable({ reports }: StolenReportsProps) {
+export default function AllReportsTable({ reports }: StolenReportsProps) {
   const data = reports || []
   const columnHelper = createColumnHelper<StolenReportProps>()
 

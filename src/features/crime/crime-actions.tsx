@@ -7,6 +7,19 @@ import { db } from "@/lib/db";
 const polygon = "52.69,-1.67:52.62,-1.52:52.57,-1.72:52.65,-1.84";
 const force = "staffordshire";
 
+export async function getAllPublishedReportsAction(take?: number) {
+  const reports = await db.stolenReport.findMany({
+    take,
+    where: {
+      published: true
+    }
+  })
+
+  if (!reports) return null
+
+  return reports
+}
+
 export async function getAllCrimesAction() {
 
   const [data1, data2, data3] = await Promise.all([
@@ -71,11 +84,9 @@ export async function createStolenReportAction(data: z.infer<typeof stolenReport
 
     await db.stolenReport.create({
       data: {
-        name: validated.name,
         email: validated.email,
-        contactNumber: validated.contactNumber,
-        item: validated.item,
-        itemDescription: validated.itemDescription,
+        make: validated.make,
+        model: validated.model,
         registration: validated.registration,
         image: validated.image,
         featured: false,
@@ -89,4 +100,5 @@ export async function createStolenReportAction(data: z.infer<typeof stolenReport
     return { success: false, message: 'Failed to send report' }
   }
 }
+
 

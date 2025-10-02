@@ -13,14 +13,14 @@ export default function CategorySelector({ categories, selectedCategory, setCate
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger asChild className="p-0">
-        <Button variant="outline" role="combobox" aria-expanded={isOpen} className="w-[250px] justify-between p-0" size={'sm'}>
+        <Button variant="outline" role="combobox" aria-expanded={isOpen} className="w-[250px] justify-between p-0" size={'sm'} >
           {selectedCategory === 'all' && 'Search By Category'}
           {selectedCategory ? categories.find((cat) => cat === selectedCategory) : "Select category..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="w-[250px] p-0 z-[9999]"
+        className="p-0 z-[9999]"
         side="bottom" // force it to open below
         align="start"
         sideOffset={5}

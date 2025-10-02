@@ -20,7 +20,7 @@ export default function AdminCrimeMenu() {
                   <SidebarMenuSubButton href="/admin/crime/pending">All Posts</SidebarMenuSubButton>
                 </SidebarMenuSubItem>
                 <SidebarMenuSubItem>
-                  <SidebarMenuSubButton href="/admin/crime/pending">All Reports</SidebarMenuSubButton>
+                  <SidebarMenuSubButton href="/admin/crime/reports">All Reports</SidebarMenuSubButton>
                 </SidebarMenuSubItem>
                 <SidebarMenuSubItem>
                   <SidebarMenuSubButton href="/admin/crime/pending">Pending Reports</SidebarMenuSubButton>

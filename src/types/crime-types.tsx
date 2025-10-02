@@ -57,11 +57,9 @@ export type OutcomeProps = {
 
 export type StolenReportProps = {
   id: string;
-  name: string;
   email: string;
-  contactNumber: string
-  item: string;
-  itemDescription: string
+  make: string;
+  model: string
   registration: string | null
   image: string
   published: boolean;

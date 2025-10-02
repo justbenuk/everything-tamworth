@@ -7,7 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import SimpleEditor from "@/components/simple-editor";
 import Image from "next/image";
 import StolenReportImageUploadButton from "@/features/images/stolen-report-uploader";
 import { removeImageUploadedByUrl } from "@/features/images/image-actions";
@@ -21,11 +20,9 @@ export default function StolenReportForm() {
   const form = useForm<z.infer<typeof stolenReportSchema>>({
     resolver: zodResolver(stolenReportSchema),
     defaultValues: {
-      name: '',
       email: '',
-      contactNumber: '',
-      item: '',
-      itemDescription: '',
+      make: '',
+      model: '',
       registration: '',
       image: '',
       published: false,
@@ -63,40 +60,10 @@ export default function StolenReportForm() {
             <div className="grid gap-3">
               <FormField
                 control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-teal-500">Name</FormLabel>
-                    <FormControl>
-                      <Input {...field} className="border-teal-500" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <div className="grid gap-3">
-              <FormField
-                control={form.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-teal-500">Email</FormLabel>
-                    <FormControl>
-                      <Input {...field} className="border-teal-500" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <div className="grid gap-3">
-              <FormField
-                control={form.control}
-                name="contactNumber"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-teal-500">Contact Number</FormLabel>
                     <FormControl>
                       <Input {...field} className="border-teal-500" />
                     </FormControl>
@@ -116,10 +83,10 @@ export default function StolenReportForm() {
             <div className="grid gap-3">
               <FormField
                 control={form.control}
-                name="item"
+                name="make"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-teal-500">Item Stolen</FormLabel>
+                    <FormLabel className="text-teal-500">Make</FormLabel>
                     <FormControl>
                       <Input {...field} className="border-teal-500" />
                     </FormControl>
@@ -131,14 +98,12 @@ export default function StolenReportForm() {
             <div className="grid gap-3">
               <FormField
                 control={form.control}
-                name="itemDescription"
+                name="model"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-teal-500">Item Description</FormLabel>
+                    <FormLabel className="text-teal-500">Model</FormLabel>
                     <FormControl>
-                      <div className="border-teal-500">
-                        <SimpleEditor {...field} />
-                      </div>
+                      <Input {...field} className="border-teal-500" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -153,7 +118,7 @@ export default function StolenReportForm() {
                   <FormItem>
                     <FormLabel className="text-teal-500">Registration</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder="Optional" className="border-teal-500" />
+                      <Input {...field} className="border-teal-500" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

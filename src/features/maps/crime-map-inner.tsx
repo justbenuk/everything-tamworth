@@ -70,7 +70,7 @@ export default function CrimeMapInner({ crimes }: AllCrimesProp) {
   if (!markerIcon) return null;
 
   return (
-    <LeafletMapContainer center={[52.6336, -1.691]} zoom={12} style={{ height: "450px", width: "100%" }} className="z-10 rounded-2xl overflow-hidden">
+    <LeafletMapContainer center={[52.6336, -1.691]} zoom={12} style={{ height: "450px", width: "100%" }} className="z-10 relative">
       <LeafletTileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

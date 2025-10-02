@@ -4,7 +4,7 @@ const f = createUploadthing()
 export const ourFileRouter = {
   stolenReportImageUploader: f({
     image: {
-      maxFileSize: "4MB",
+      maxFileSize: "8MB",
       maxFileCount: 1
     }
   })

@@ -6,7 +6,6 @@ import Link from "next/link"
 import { format } from 'date-fns'
 import { enGB } from 'date-fns/locale/en-GB'
 import { CrimeProps } from "@/types"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import PageTitle from "@/components/page-title"
 
 export const metadata: Metadata = {
@@ -37,39 +36,30 @@ export default async function StatsPage() {
 
 
   return (
-    <PageContainer className="space-y-2">
+    <div className="space-y-8">
       <PageTitle title="Recorded Crimes" description="All crimes recorded in Tamworth over the month." />
       <CrimeMapOuter crimes={merged} categories={categories} />
-      <div className="flex flex-row justify-end items-center">
-        <div className="font-medium italic text-xs">Last Updated: {formatedDate}</div>
-      </div>
       <div className="grid md:grid-cols-3 gap-4">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-teal-500">Total Crimes</CardTitle>
-          </CardHeader>
-          <CardContent className="flex items-center justify-center text-3xl">
+        <div className="border">
+          <div className="bg-teal-500 text-white font-semibold p-2">Total Crimes</div>
+          <div className="flex flex-col items-center justify-center text-3xl py-4">
             {merged.length}
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-teal-500">Total Population</CardTitle>
-          </CardHeader>
-          <CardContent className="flex items-center justify-center text-3xl">
+          </div>
+        </div>
+        <div className="border">
+          <div className="bg-teal-500 text-white font-semibold p-2">Population</div>
+          <div className="flex flex-col items-center justify-center text-3xl py-4">
             {population}
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-teal-500">Percentage Per Population</CardTitle>
-          </CardHeader>
-          <CardContent className="flex items-center justify-center text-3xl">
+          </div>
+        </div>
+        <div className="border">
+          <div className="bg-teal-500 text-white font-semibold p-2">% per 1000 Residents</div>
+          <div className="flex flex-col items-center justify-center text-3xl py-4">
             {percentage.toFixed(0) + '%'}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
-    </PageContainer >
+    </div >
   )
 }
 

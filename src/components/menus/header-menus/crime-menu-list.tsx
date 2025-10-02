@@ -19,8 +19,8 @@ export default function CrimeMenuList() {
             <div className="text-muted-foreground text-xs">Check stop and search crime in Tamworth</div>
           </NavigationMenuLink>
           <NavigationMenuLink href="/crime/stolen-report">
-            <div className="font-medium">Stolen Item Report</div>
-            <div className="text-muted-foreground text-xs">Report your stolen Items. Let the community know so they can keep an eye out for you</div>
+            <div className="font-medium">Stolen Vehicle Report</div>
+            <div className="text-muted-foreground text-xs">Report your stolen Vehicle. Let the community know so they can keep an eye out for you</div>
           </NavigationMenuLink>
         </div>
       </NavigationMenuContent>

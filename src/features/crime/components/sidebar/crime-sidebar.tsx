@@ -1,14 +1,17 @@
-import { BookCheckIcon } from "lucide-react";
 import Link from "next/link";
+import StolenReportsSidebar from "./stolen-reports-sidebar";
 
 export default function CrimeSidebar() {
   return (
-    <aside>
-      <div className="border-2 border-dashed border-teal-500 bg-teal-500/10 rounded-2xl">
-        <Link href={'/crime/stolen-report'} className="flex flex-row items-center justify-center h-18 gap-4 text-teal-500 font-medium">
-          <BookCheckIcon />
-          <span>Report Your Stolen Item</span>
-        </Link>
+    <aside className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1">
+      <div>
+        <div className="border overflow-hidden">
+          <div className="bg-teal-500 p-2 text-white font-semibold">Stolen Vehicles</div>
+          <StolenReportsSidebar />
+          <div className="flex flex-row justify-end pr-2 pb-2">
+            <Link href={'/'} className="text-xs italic">View All</Link>
+          </div>
+        </div>
       </div>
     </aside>
   )

@@ -42,18 +42,15 @@ model Contact {
 }
 
 model StolenReport {
-  id            String @id @default(cuid())
-  name          String
-  email         String
-  contactNumber String
-
-  item            String
-  itemDescription String
-  registration    String?
-  image           String
-  featured        Boolean @default(false)
-  published       Boolean @default(false)
-  found           Boolean @default(false)
+  id           String  @id @default(cuid())
+  make         String
+  model        String
+  registration String
+  email        String
+  image        String
+  featured     Boolean @default(false)
+  published    Boolean @default(false)
+  found        Boolean @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
