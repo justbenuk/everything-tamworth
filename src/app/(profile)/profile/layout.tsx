@@ -1,4 +1,4 @@
-import Header from "@/components/header";
+import Header from "@/components/headers/header";
 import PageContainer from "@/components/page-container";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { LayoutProps } from "@/types";

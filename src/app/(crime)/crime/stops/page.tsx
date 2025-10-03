@@ -4,9 +4,8 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { format } from 'date-fns'
 import { enGB } from 'date-fns/locale/en-GB'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import StopsMapOuter from "@/features/maps/stops-map-outer"
-import PageTitle from "@/components/page-title"
+import SectionTitle from "@/components/section-title"
 
 export const metadata: Metadata = {
   title: 'Recorded Stop and Search&apos;s',
@@ -36,36 +35,32 @@ export default async function StopsPage() {
 
   return (
     <PageContainer className="space-y-2">
-      <PageTitle title="Recorded Stop & Search" />
-      <StopsMapOuter searches={stops} />
+      <div>
+        <SectionTitle title="Stop & search" />
+        <StopsMapOuter searches={stops} />
+      </div>
       <div className="flex flex-row justify-end items-center">
         <div className="font-medium italic text-xs">Last Updated: {formatedDate}</div>
       </div>
-      <div className="grid md:grid-cols-3 gap-4">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-teal-500">Total Crimes</CardTitle>
-          </CardHeader>
-          <CardContent className="flex items-center justify-center text-3xl">
+      <div className="grid md:grid-cols-3 gap-10">
+        <div>
+          <SectionTitle title="Total Stops" />
+          <div className="flex flex-col items-center justify-center text-3xl py-4">
             {stops.length}
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-teal-500">Total Population</CardTitle>
-          </CardHeader>
-          <CardContent className="flex items-center justify-center text-3xl">
+          </div>
+        </div>
+        <div>
+          <SectionTitle title="Population" />
+          <div className="flex flex-col items-center justify-center text-3xl py-4">
             {population}
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-teal-500">Percentage Per Population</CardTitle>
-          </CardHeader>
-          <CardContent className="flex items-center justify-center text-3xl">
+          </div>
+        </div>
+        <div>
+          <SectionTitle title="Percentage Per 1000 Residents" />
+          <div className="flex flex-col items-center justify-center text-3xl py-4">
             {percentage.toFixed(2) + '%'}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </PageContainer >
   )

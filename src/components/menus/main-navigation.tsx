@@ -1,25 +1,21 @@
 import React from "react";
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink } from "../ui/navigation-menu";
-import BusinessMenuList from "./header-menus/business-menu-list";
-import CommunityMenuList from "./header-menus/community-menu-list";
-import CrimeMenuList from "./header-menus/crime-menu-list";
-import EventsMenuList from "./header-menus/events-menu-list";
-import JobsMenuList from "./header-menus/jobs-news-list";
-import NewsMenuList from "./header-menus/news-menu-list";
-import { NavigationMenuList } from "@radix-ui/react-navigation-menu";
+import PageContainer from "../page-container";
+import { MenuIcon } from "lucide-react";
+import MenuList from "./menu-list";
 
 export default function MainNavigation() {
-  return <NavigationMenu className="hidden lg:block">
-    <NavigationMenuList className="flex flex-row">
-      <NewsMenuList />
-      <BusinessMenuList />
-      <JobsMenuList />
-      <CrimeMenuList />
-      <EventsMenuList />
-      <CommunityMenuList />
-      <NavigationMenuItem>
-        <NavigationMenuLink href="/contact">Contact</NavigationMenuLink>
-      </NavigationMenuItem>
-    </NavigationMenuList>
-  </NavigationMenu>;
+  return (
+    <div className="bg-teal-500 py-4 text-white">
+      <PageContainer>
+        <div>
+          <div className="lg:hidden">
+            <MenuIcon />
+          </div>
+          <div className="hidden lg:flex flex-row items-center justify-center">
+            <MenuList />
+          </div>
+        </div>
+      </PageContainer>
+    </div>
+  )
 }

@@ -1,4 +1,4 @@
-import Header from "@/components/header";
+import Header from "@/components/headers/header";
 import PageContainer from "@/components/page-container";
 import CrimeSidebar from "@/features/crime/components/sidebar/crime-sidebar";
 import { LayoutProps } from "@/types";

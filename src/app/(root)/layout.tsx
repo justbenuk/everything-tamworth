@@ -1,4 +1,4 @@
-import Header from "@/components/header";
+import Header from "@/components/headers/header";
 import { LayoutProps } from "@/types";
 
 export default function RootLayout({ children }: LayoutProps) {

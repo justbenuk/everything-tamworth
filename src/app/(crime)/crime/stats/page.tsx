@@ -1,4 +1,3 @@
-import PageContainer from "@/components/page-container"
 import { getAllCrimesAction } from "@/features/crime/crime-actions"
 import CrimeMapOuter from "@/features/maps/crime-map-outer"
 import { Metadata } from "next"
@@ -6,7 +5,7 @@ import Link from "next/link"
 import { format } from 'date-fns'
 import { enGB } from 'date-fns/locale/en-GB'
 import { CrimeProps } from "@/types"
-import PageTitle from "@/components/page-title"
+import SectionTitle from "@/components/section-title"
 
 export const metadata: Metadata = {
   title: 'Recorded Crimes',
@@ -37,23 +36,26 @@ export default async function StatsPage() {
 
   return (
     <div className="space-y-8">
-      <PageTitle title="Recorded Crimes" description="All crimes recorded in Tamworth over the month." />
-      <CrimeMapOuter crimes={merged} categories={categories} />
-      <div className="grid md:grid-cols-3 gap-4">
-        <div className="border">
-          <div className="bg-teal-500 text-white font-semibold p-2">Total Crimes</div>
+      <div>
+        <SectionTitle title="Recorded Crimes" />
+        <CrimeMapOuter crimes={merged} categories={categories} />
+        <p className="flex flex-row justify-end text-xs italic">{formatedDate}</p>
+      </div>
+      <div className="grid md:grid-cols-3 gap-10">
+        <div>
+          <SectionTitle title="Total Crimes" />
           <div className="flex flex-col items-center justify-center text-3xl py-4">
             {merged.length}
           </div>
         </div>
-        <div className="border">
-          <div className="bg-teal-500 text-white font-semibold p-2">Population</div>
+        <div>
+          <SectionTitle title="Population" />
           <div className="flex flex-col items-center justify-center text-3xl py-4">
             {population}
           </div>
         </div>
-        <div className="border">
-          <div className="bg-teal-500 text-white font-semibold p-2">% per 1000 Residents</div>
+        <div>
+          <SectionTitle title="per 1000 Residents affected" />
           <div className="flex flex-col items-center justify-center text-3xl py-4">
             {percentage.toFixed(0) + '%'}
           </div>

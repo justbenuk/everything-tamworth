@@ -1,10 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function SiteTitle() {
   return (
-    <Link href={'/'}>
-      <Image src={'/assets/logo.png'} alt="Site Logo" width={40} height={40} className="rounded-full" />
+    <Link href={'/'} className="flex flex-col items-center justify-center">
+      <span className="text-4xl">Everything Tamworth</span>
+      <span className="text-muted-foreground">Choose Local</span>
     </Link>
   )
 }

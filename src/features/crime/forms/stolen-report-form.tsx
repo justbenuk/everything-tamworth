@@ -12,6 +12,7 @@ import StolenReportImageUploadButton from "@/features/images/stolen-report-uploa
 import { removeImageUploadedByUrl } from "@/features/images/image-actions";
 import { createStolenReportAction } from "../crime-actions";
 import toast from "react-hot-toast";
+import SectionTitle from "@/components/section-title";
 
 export default function StolenReportForm() {
 
@@ -51,12 +52,10 @@ export default function StolenReportForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleForm)} className="grid gap-6">
-        <div className="grid sm:grid-cols-2 gap-10 border-b border-dashed py-10">
-          <div className="space-y-4">
-            <h1 className="text-teal-500 text-xl font-semibold underline underline-offset-8">Personal Information</h1>
-            <p className="text-sm text-muted-foreground">Please note, We do not share any of your personal information. We will use ut to contact you directly if we receive an update that helps you locate your missing items</p>
-          </div>
-          <div className="grid gap-6 bg-muted p-4 lg:p-8 rounded-2xl">
+        <div className="mt-10">
+          <SectionTitle title="Personal Information" />
+          <div className="grid md:grid-cols-2 gap-6 md:gap-10">
+            <p>Please note, We do not share any of your personal information. We will use it to contact you directly if we receive an update that helps you locate your missing items</p>
             <div className="grid gap-3">
               <FormField
                 control={form.control}
@@ -74,65 +73,65 @@ export default function StolenReportForm() {
             </div>
           </div>
         </div>
-        <div className="grid sm:grid-cols-2 gap-10 border-b border-dashed py-10">
-          <div className="space-y-4">
-            <h1 className="text-teal-500 text-xl font-semibold underline underline-offset-8">Stolen Item</h1>
-            <p className="text-sm text-muted-foreground">Please provide as much information as possible, Please describe any Damage, identifying features or last known location</p>
-          </div>
-          <div className="grid gap-6 bg-muted p-4 lg:p-8 rounded-2xl">
-            <div className="grid gap-3">
-              <FormField
-                control={form.control}
-                name="make"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-teal-500">Make</FormLabel>
-                    <FormControl>
-                      <Input {...field} className="border-teal-500" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <div className="grid gap-3">
-              <FormField
-                control={form.control}
-                name="model"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-teal-500">Model</FormLabel>
-                    <FormControl>
-                      <Input {...field} className="border-teal-500" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <div className="grid gap-3">
-              <FormField
-                control={form.control}
-                name="registration"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-teal-500">Registration</FormLabel>
-                    <FormControl>
-                      <Input {...field} className="border-teal-500" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+
+        <div className="mt-10">
+          <SectionTitle title="Vehicle Details" />
+          <div className="grid md:grid-cols-2 gap-6 md:gap-10">
+            <p>Please provide as much information as possible, Please describe any Damage, identifying features or last known location</p>
+            <div className="grid gap-6">
+              <div className="grid gap-3">
+                <FormField
+                  control={form.control}
+                  name="make"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-teal-500">Make</FormLabel>
+                      <FormControl>
+                        <Input {...field} className="border-teal-500" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="grid gap-3">
+                <FormField
+                  control={form.control}
+                  name="model"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-teal-500">Model</FormLabel>
+                      <FormControl>
+                        <Input {...field} className="border-teal-500" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="grid gap-3">
+                <FormField
+                  control={form.control}
+                  name="registration"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-teal-500">Registration</FormLabel>
+                      <FormControl>
+                        <Input {...field} className="border-teal-500" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
             </div>
           </div>
         </div>
-        <div className="grid sm:grid-cols-2 gap-10 border-b border-dashed py-10">
-          <div className="space-y-4">
-            <h1 className="text-teal-500 text-xl font-semibold underline underline-offset-8">Image</h1>
-            <p className="text-sm text-muted-foreground">Please provide an image of the missing item</p>
-          </div>
-          <div className="grid gap-6 bg-muted p-4 lg:p-8 rounded-2xl">
+
+        <div className="mt-10">
+          <SectionTitle title="Vehicle Picture" />
+          <div className="grid md:grid-cols-2 gap-6 md:gap-10">
+            <p>Please provide an image of the missing item</p>
             <div className="grid gap-3">
               <FormField
                 control={form.control}
